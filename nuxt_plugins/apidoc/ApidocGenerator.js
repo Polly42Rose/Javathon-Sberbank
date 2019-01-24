@@ -28,7 +28,7 @@ module.exports = class ApidocWatcher {
     }
 
     apply() {
-        if (process.env.NODE_ENV === 'production') {
+        if (process.env.APP_ENV === 'production') {
         } else {
             watch.watchTree(this.apiPath, { ignoreDotFiles: true }, (f, curr, prev) => {
                 if (typeof f === 'object' && prev === null && curr === null) {

@@ -11,7 +11,7 @@ let proxyfiedUrls = [
     '/auth/*',
 ];
 let axiosConfig = {};
-if (process.env.NODE_ENV === 'production') {
+if (process.env.APP_ENV === 'production') {
     axiosConfig = {
         browserBaseURL: config.FRONTEND_SERVER_URL,
         baseURL: config.API_SERVER_HOST,
@@ -45,7 +45,7 @@ module.exports = {
 
             // remove default UglifyJs plugin from Nuxt
             config.plugins = config.plugins.filter(plugin => plugin.constructor.name !== 'UglifyJsPlugin');
-            if (process.env.NODE_ENV === 'production') {
+            if (process.env.APP_ENV === 'production') {
                 config.plugins.push(new UglifyJsPlugin({
                     sourceMap: false,
                     uglifyOptions: {
