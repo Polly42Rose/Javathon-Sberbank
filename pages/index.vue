@@ -1,13 +1,7 @@
 <template>
     <div class="app">
         <rates class="rates" />
-        <div class="container">
-            <div class="Chart__list">
-                <div class="Chart">
-                    <currency-chart></currency-chart>
-                </div>
-            </div>
-        </div>
+        <currency-chart></currency-chart>
     </div>
 </template>
 
@@ -31,24 +25,6 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         margin-top: 60px;
-    }
-    .container {
-        max-width: 80vw;
-        height: 500px;
-        margin: 0 auto;
-    }
-    .Chart {
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
-        margin:  25px 0;
-    }
-
-    .Chart h2 {
-        margin-top: 0;
-        padding: 15px 0;
-        color:  black;
-        border-bottom: 1px solid #323d54;
     }
 
 </style>
