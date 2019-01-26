@@ -1,5 +1,6 @@
 <template>
-    <div id="app">
+    <div class="app">
+        <rates class="rates" />
         <div class="container">
             <div class="Chart__list">
                 <div class="Chart">
@@ -11,28 +12,29 @@
 </template>
 
 <script>
-import CurrencyChart from '@/components/CurrencyChart.vue'
+import CurrencyChart from '@/components/CurrencyChart.vue';
+import Rates from '@/components/Rates.vue';
 
 export default {
     name: 'Index',
+    layout: 'NavMenu',
     components: {
         CurrencyChart,
-    }
+        Rates,
+    },
 }
-    layout: 'NavMenu',
 </script>
 
 <style>
-    #app {
+    .app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
         margin-top: 60px;
     }
     .container {
-        max-width: 800px;
+        max-width: 80vw;
+        height: 500px;
         margin: 0 auto;
     }
     .Chart {
@@ -48,4 +50,5 @@ export default {
         color:  black;
         border-bottom: 1px solid #323d54;
     }
+
 </style>

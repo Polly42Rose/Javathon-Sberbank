@@ -1,8 +1,11 @@
 <template>
-    <div class="nav-menu-container">
-        <button class="menu-element-left"><a>Курсы валют</a></button>
-        <button class="menu-element-inner"><a>Моя статистика</a></button>
-        <button class="menu-element-inner"><a>Обмен валют</a></button>
+    <div>
+        <div class="nav-menu-container">
+            <button class="menu-element-left"><a>Курсы валют</a></button>
+            <button class="menu-element-inner"><a>Моя статистика</a></button>
+            <button class="menu-element-inner"><a>Обмен валют</a></button>
+        </div>
+        <nuxt/>
     </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
-    <div>
-
-        <line-chart v-if=loaded :options="labels" :chart-data="chartData"></line-chart>
+    <div class="chart-container">
+        <line-chart v-if=loaded :options="labels" :chart-data="chartData" class="chart-style"></line-chart>
     </div>
 </template>
 
@@ -46,4 +45,13 @@ export default {
 
 <style lang="scss" scoped>
 
+    $height: 60vh;
+
+    .chart-container {
+        height: $height;
+
+        .chart-style {
+            height: $height;
+        }
+    }
 </style>
