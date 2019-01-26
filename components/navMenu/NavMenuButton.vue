@@ -36,12 +36,11 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "~@/assets/colors.scss";
+    @import "~@/assets/css/colors.scss";
+    @import "~@/assets/css/styles.scss";
 
     %nav-menu-button {
-        color: white;
-        padding: 0px;
-        border: 0px;
+        @extend %clear-button-style;
         width: 10em;
         height: 3em;
     }
