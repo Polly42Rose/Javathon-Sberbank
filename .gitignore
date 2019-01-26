@@ -6,3 +6,5 @@ node_modules/
 
 api/\.api_result\.js
 plugins/country_list/CountryList.js
+
+\.eslintrc\.js

@@ -1,15 +1,12 @@
 <template>
-    <div>
-        хуй
-    </div>
 </template>
 
 <script>
 export default {
-    name: "index"
-}
+    name: 'Index',
+    layout: 'NavMenu',
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>
