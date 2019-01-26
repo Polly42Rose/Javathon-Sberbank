@@ -8,18 +8,36 @@
                          type="inner">Статистика</nav-menu-button>
         <nav-menu-button href="/exchange"
                          :is-active="isActive('exchange')"
-                         type="right">Обмен</nav-menu-button>
+                         type="inner">Обмен</nav-menu-button>
+        <nav-menu-button :href="$route.name"
+                         :is-active="false"
+                         type="inner">{{ curUserName }}</nav-menu-button>
+        <nav-menu-button v-if="$store.getters.isAuthenticated"
+                         href="/logout"
+                         :is-active="false"
+                         type="right">Выйти</nav-menu-button>
+        <nav-menu-button v-else
+                         href="/login"
+                         :is-active="isActive('login')"
+                         type="right">Войти</nav-menu-button>
     </div>
 </template>
 
 <script>
 import NavMenuButton from "@/components/navMenu/NavMenuButton.vue"
+import UserAdapter from "@/adapters/UserAdapter.js";
+
 
 export default {
     name: 'NavMenu',
     components: {NavMenuButton},
     comments: {
         NavMenuButton,
+    },
+    computed: {
+        curUserName() {
+            return UserAdapter(this.$store.getters.user, true).name;
+        }
     },
     methods: {
         isActive(name) {

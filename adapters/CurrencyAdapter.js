@@ -1,17 +1,17 @@
-import { generateBoolean } from "../assets/js/helper.js";
+import { generateBoolean, generateString } from "../assets/js/helper.js";
 
 const CurrencyAdapter = (currency, isFake) => {
     if (isFake) {
         return {
             value: Math.random().toFixed(2),
-            name: "USD",
+            name: generateString(),
             isUp: generateBoolean(),
         }
     }
     return {
         name: currency.charCode,
         value: currency.value,
-        isUp: currency.isUp,
+        isUp: generateBoolean(),
     };
 };
 
