@@ -8,6 +8,7 @@ const state = {
 const getters = {
     // isAuthenticated: (state) => !!state.user,
     // loggedUser: (state) => state.user,
+    isAuthenticated: () => true,
     csrf: ({ csrfToken }) => csrfToken,
 };
 

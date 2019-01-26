@@ -1,46 +1,47 @@
 <template>
     <div>
-        <div class="nav-menu-container">
-            <nav-menu-button href="/"
-                             :is-active="isActive('index')"
-                             type="left">Курс Валюты</nav-menu-button>
-            <nav-menu-button href="/statistic"
-                             :is-active="isActive('statistic')"
-                             type="inner">Статистика</nav-menu-button>
-            <nav-menu-button href="/exchange"
-                             :is-active="isActive('exchange')"
-                             type="right">Обмен</nav-menu-button>
+        <nav-menu/>
+        <div class="layout-data-container-style">
+            <rates class="nav-menu-rates"></rates>
+            <private-office :name="user.name"></private-office>
         </div>
         <nuxt/>
     </div>
 </template>
 
 <script>
-import NavMenuButton from "@/components/navMenu/NavMenuButton.vue"
+import NavMenu from "@/components/navMenu/NavMenu.vue";
+import Rates from "@/components/navMenu/Rates.vue";
+import PrivateOffice from "@/components/navMenu/PrivateOffice.vue";
+import UserAdapter from "@/adapters/UserAdapter.js";
 
 export default {
-    name: 'NavMenu',
-    components: {NavMenuButton},
-    comments: {
-        NavMenuButton,
+    data() {
+        return {
+            user: UserAdapter(null, true),
+        }
     },
-    methods: {
-        isActive(name) {
-            const activeName = this.$route.name;
-            return activeName === name;
-        },
+    components: {PrivateOffice, Rates, NavMenu},
+    comments: {
+        NavMenu,
+        Rates,
+        PrivateOffice,
     }
+
 };
 </script>
 
 <style lang="scss" scoped>
 
-
-    .nav-menu-container {
+    .layout-data-container-style {
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        align-items: center;
+        justify-content: space-around;
+        margin-top: 5vh;
 
+        .nav-menu-rates {
+
+        }
     }
+
 </style>

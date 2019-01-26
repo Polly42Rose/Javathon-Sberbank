@@ -2,22 +2,24 @@
     <div class="rate-container">
         <div class="rate-title">Курсы валют</div>
         <table class="rate-table-style">
-            <tr>
-                <th></th>
-                <th class="rate-table-title">Курс</th>
-            </tr>
-            <tr>
-                <th>Евро</th>
-                <th>{{euro}}</th>
-                <th v-if="isEuroUp" class="up-rate-arrow"></th>
-                <th v-else class="down-rate-arrow"></th>
-            </tr>
-            <tr>
-                <th>Доллар США</th>
-                <th>{{dollar}}</th>
-                <th v-if="isDollarUp" class="up-rate-arrow"></th>
-                <th v-else class="down-rate-arrow"></th>
-            </tr>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th class="rate-table-title">Курс</th>
+                </tr>
+                <tr>
+                    <th>Евро</th>
+                    <th>{{euro}}</th>
+                    <th v-if="isEuroUp" class="up-rate-arrow"></th>
+                    <th v-else class="down-rate-arrow"></th>
+                </tr>
+                <tr>
+                    <th>Доллар США</th>
+                    <th>{{dollar}}</th>
+                    <th v-if="isDollarUp" class="up-rate-arrow"></th>
+                    <th v-else class="down-rate-arrow"></th>
+                </tr>
+            </tbody>
         </table>
         <div class="rate-exchange-url"><a href="/exchange">Обмен валюты</a></div>
     </div>
@@ -48,7 +50,7 @@ export default {
     }
 
     .rate-container {
-        margin-left: 15vw;
+        /*margin-left: 15vw;*/
         width: 10vw;
 
         .rate-title {
