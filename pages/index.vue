@@ -3,8 +3,7 @@
         <div class="container">
             <div class="Chart__list">
                 <div class="Chart">
-                    <h2>Linechart</h2>
-                    <line-example></line-example>
+                    <currency-chart></currency-chart>
                 </div>
             </div>
         </div>
@@ -12,12 +11,12 @@
 </template>
 
 <script>
-import LineExample from '/assets/js/LineChart.js'
+import CurrencyChart from '@/components/CurrencyChart.vue'
 
 export default {
     name: 'Index',
     components: {
-        LineExample
+        CurrencyChart,
     }
 }
 </script>
@@ -33,10 +32,10 @@ export default {
     }
     .container {
         max-width: 800px;
-        margin:  0 auto;
+        margin: 0 auto;
     }
     .Chart {
-        background: #212733;
+        background: white;
         border-radius: 15px;
         box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
         margin:  25px 0;
@@ -45,7 +44,7 @@ export default {
     .Chart h2 {
         margin-top: 0;
         padding: 15px 0;
-        color:  rgba(255, 0,0, 0.5);
+        color:  black;
         border-bottom: 1px solid #323d54;
     }
 </style>
