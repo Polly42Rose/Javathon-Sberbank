@@ -6,3 +6,6 @@ export function generateFullName() {
     return generateString() + " " + generateString() + " " + generateString();
 }
 
+export function generateBoolean() {
+    return Math.round(Math.random()) % 2 === 0;
+}

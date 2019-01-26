@@ -7,16 +7,10 @@
                     <th></th>
                     <th class="rate-table-title">Курс</th>
                 </tr>
-                <tr>
-                    <th>Евро</th>
-                    <th>{{euro}}</th>
-                    <th v-if="isEuroUp" class="up-rate-arrow"></th>
-                    <th v-else class="down-rate-arrow"></th>
-                </tr>
-                <tr>
-                    <th>Доллар США</th>
-                    <th>{{dollar}}</th>
-                    <th v-if="isDollarUp" class="up-rate-arrow"></th>
+                <tr v-for="currency in currencies" :key="currency.name">
+                    <th>{{ currency.name }}</th>
+                    <th>{{ currency.value }}</th>
+                    <th v-if="currency.isUp" class="up-rate-arrow"></th>
                     <th v-else class="down-rate-arrow"></th>
                 </tr>
             </tbody>
@@ -26,14 +20,22 @@
 </template>
 
 <script>
+
+import CurrencyAdapter from '@/adapters/CurrencyAdapter.js';
+
 export default {
     name: "Rates",
     data() {
         return {
-            euro: 73.62,
-            dollar: 64.96,
-            isEuroUp: false,
-            isDollarUp: true
+            currencies: [],
+        }
+    },
+    mounted() {
+        this.getData();
+    },
+    methods: {
+        getData() {
+            this.currencies =  [null, null, null, null].map((el) => CurrencyAdapter(el, true));
         }
     }
 }

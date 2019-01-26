@@ -2,7 +2,7 @@
     <div class="private-office-container">
         <div class="private-office-name">{{ name }}</div>
         <a v-if="$store.getters.isAuthenticated" href="/logout">Выйти</a>
-        <a v-else href="login">Войти</a>
+        <a v-else href="/login">Войти</a>
     </div>
 </template>
 
