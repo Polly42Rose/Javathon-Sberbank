@@ -19,7 +19,7 @@
                 <th v-else class="down-rate-arrow"></th>
             </tr>
         </table>
-        <div class="rate-exchange-url"><a href="/test">Обмен валюты</a></div>
+        <div class="rate-exchange-url"><a href="/exchange">Обмен валюты</a></div>
     </div>
 </template>
 

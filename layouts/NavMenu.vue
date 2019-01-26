@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="nav-menu-container">
-            <button class="menu-element-left"><a>Курсы валют</a></button>
-            <button class="menu-element-inner"><a>Моя статистика</a></button>
-            <button class="menu-element-inner"><a>Обмен валют</a></button>
+            <a href="/"><button class="menu-element-left">Курсы валют</button></a>
+            <a href="/statistic"><button class="menu-element-inner">Моя статистика</button></a>
+            <a href="/exchange" ><button class="menu-element-right">Обмен валют</button></a>
         </div>
         <nuxt/>
     </div>
@@ -12,7 +12,11 @@
 <script>
 export default {
     name: 'NavMenu',
-
+    computed: {
+        curRoute() {
+            return this.$route.name;
+        }
+    }
 };
 </script>
 
@@ -43,6 +47,12 @@ export default {
 
         .menu-element-inner {
             @extend %menu-element;
+        }
+
+        .menu-element-right {
+            @extend %menu-element;
+
+            border-radius: 0px 5px 5px 0px;
         }
     }
 </style>
