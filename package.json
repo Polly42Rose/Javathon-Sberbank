@@ -7,9 +7,9 @@
         }
     },
     "scripts": {
-        "dev": "APP_ENV=develop nuxt",
-        "build": "APP_ENV=production nuxt build",
-        "start": "APP_ENV=production nuxt start",
+        "dev": "NODE_ENV=develop nuxt",
+        "build": "NODE_ENV=production nuxt build",
+        "start": "NODE_ENV=production nuxt start",
         "install-start": "npm install && npm start"
     },
     "dependencies": {
