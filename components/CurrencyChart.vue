@@ -75,6 +75,10 @@ export default {
             margin-top: 2vh;
             margin-right: 1vw;
             margin-left: 1vw;
+            
+            @media (max-width: 500px) {
+                margin-bottom: 1vh;
+            }
         }
     }
 

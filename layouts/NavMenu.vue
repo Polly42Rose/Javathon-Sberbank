@@ -40,7 +40,11 @@ export default {
         margin-top: 5vh;
 
         .nav-menu-rates {
+            flex-basis: 10%;
+            @media (max-width: 500px) {
+                margin-right: 10vw;
 
+            }
         }
     }
 
