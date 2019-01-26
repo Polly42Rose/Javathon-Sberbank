@@ -19,6 +19,7 @@ export default {
         CurrencyChart,
     }
 }
+    layout: 'NavMenu',
 </script>
 
 <style>
