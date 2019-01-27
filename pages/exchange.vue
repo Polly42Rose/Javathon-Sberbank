@@ -3,11 +3,11 @@
         <currency-translater class="margin-bottom"></currency-translater>
         <div>Первая карта</div>
         <select class="account-exchange-style first-account-select">
-            <option v-for="account in accounts" :key="account.id" :value="account.number"></option>
+            <option v-for="account in accounts" :key="account.id" :value="account.number">{{account.number}}</option>
         </select>
         <div class="margin-bottom">Вторая карта</div>
         <select class="account-exchange-style">
-            <option v-for="account in accounts" :key="account.id" :value="account.number"></option>
+            <option v-for="account in accounts" :key="account.id" :value="account.number">{{account.number}}</option>
         </select>
         <div class="sum-container">
             <div class="sum-title">Сумма </div>
@@ -34,7 +34,7 @@ export default {
     },
     data() {
         return {
-            accounts: [],
+            accounts: this.$store.getters.loggedUser.accounts,
             sum: 0,
         }
     },
