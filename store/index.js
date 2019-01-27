@@ -6,17 +6,19 @@ const state = {
 };
 
 const getters = {
-    // isAuthenticated: (state) => !!state.user,
-    isAuthenticated: () => true,
+    isAuthenticated: (state) => !!state.user,
+    // isAuthenticated: () => true,
+
     loggedUser: (state) => state.user,
     csrf: ({ csrfToken }) => csrfToken,
 };
 
 const actions = {
     nuxtServerInit({ commit }) {
-        // return this.$api.getUser().then(r => {
-        //     commit('setUser', r.result);
-        // });
+        return this.$api.getUUser().then((r) => {
+            console.log(r);
+            commit('setUser', r);
+        });
     },
     nuxtClientInit({ dispatch }) {
     },
@@ -24,7 +26,10 @@ const actions = {
 
 const mutations = {
     setUser(state, user) {
-        state.user = user || null;
+        if (user.id !== 0)
+            state.user = user;
+        else
+            state.user = null;
     },
 };
 

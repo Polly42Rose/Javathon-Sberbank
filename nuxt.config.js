@@ -9,6 +9,11 @@ let proxyfiedUrls = [
     '/api/*',
     '/auth/**',
     '/auth/*',
+    '/test/*',
+    '/test/**',
+    '/test',
+    '/login',
+    '/logout',
 ];
 let axiosConfig = {};
 if (process.env.NODE_ENV === 'production') {

@@ -1,9 +1,11 @@
 <template>
     <div class="exchange-container">
         <currency-translater></currency-translater>
+        <div>Первая карта</div>
         <select class="account-exchange-style first-account-select">
             <option v-for="account in accounts" :key="account.id" :value="account.number"></option>
         </select>
+        <div>Вторая карта</div>
         <select class="account-exchange-style">
             <option v-for="account in accounts" :key="account.id" :value="account.number"></option>
         </select>

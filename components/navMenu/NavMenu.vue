@@ -17,7 +17,7 @@
                          :is-active="false"
                          type="right">Выйти</nav-menu-button>
         <nav-menu-button v-else
-                         href="'/login'"
+                         href="'/superLogin'"
                          :is-active="isActive('login')"
                          type="right">Войти</nav-menu-button>
     </div>
@@ -36,10 +36,7 @@ export default {
     },
     computed: {
         curUserName() {
-            return UserAdapter(this.$store.getters.user, true).name;
-        },
-        curRoute() {
-            return (this.$route.name === 'index' ? '/' : this.$route.name) + this.getCurrencyTypeRoute;
+            return UserAdapter(this.$store.getters.loggedUser).name;
         },
         getCurrencyTypeRoute() {
             return "?currency=" + this.$route.query.currency;

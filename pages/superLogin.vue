@@ -1,6 +1,7 @@
+<!--Deprecated-->
+
 <template>
     <div class="login-container">
-        {{$store.getters.loggedUser}}
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
             <el-form-item label="Логин" prop="login">
                 <el-input v-model="ruleForm.login" class="login-input"></el-input>
@@ -93,8 +94,8 @@ export default {
 
     %login-from-button-style {
         @extend %clear-button-style;
-        width: 6vw;
-        height: 4vh;
+        width: 6em;
+        height: 4em;
         border-radius: 5px;
 
         &:active {

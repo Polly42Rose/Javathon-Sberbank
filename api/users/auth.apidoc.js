@@ -24,3 +24,9 @@
  * @apiGroup users
  * @apiDescription get current user
  */
+/**
+ * @api {get} /test
+ * @apiName getUUser
+ * @apiGroup users
+ * @apiDescription get current user when unauthorize
+ */
