@@ -21,28 +21,15 @@
 
 <script>
 
-import CurrencyAdapter from '@/adapters/CurrencyAdapter.js';
-
 export default {
     name: "Rates",
+    props: {
+        currencies: {type: Array, required: true, },
+    },
     data() {
         return {
-            currencies: [],
         }
     },
-    mounted() {
-        this.getData();
-    },
-    methods: {
-        getData() {
-            // this.$api.getCurrencies().then((result) => {
-            //     console.error(result);
-            //     result.map((el) => CurrencyAdapter(el));
-            // }).catch(() => {
-            // });
-            this.currencies = [null, null, null, null,].map((el) => CurrencyAdapter(el, true));
-        }
-    }
 }
 </script>
 
