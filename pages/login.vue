@@ -2,7 +2,7 @@
     <div class="login-container">
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
             <el-form-item label="Логин" prop="login">
-                <el-input v-model="ruleForm.login" autocomplete="off" class="login-input"></el-input>
+                <el-input v-model="ruleForm.username" autocomplete="off" class="login-input"></el-input>
             </el-form-item>
             <el-form-item label="Пароль" prop="password">
                 <el-input type="password" v-model="ruleForm.password" autocomplete="off" class="login-input"></el-input>
@@ -39,7 +39,7 @@ export default {
         };
         return {
             ruleForm: {
-                login: '',
+                username: '',
                 password: '',
             },
             rules: {
@@ -56,7 +56,12 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-
+                    this.$api.login(this.ruleForm).then((result) => {
+                        this.$store.commit('setUser', result);
+                        this.$router.push('/users');
+                    }).catch(() => {
+                        alert('Ваш пароль или email были некорректны');
+                    });
                 } else {
                     console.error('error submit!!');
                     return false;
