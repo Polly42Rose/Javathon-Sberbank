@@ -9,7 +9,7 @@
         <nav-menu-button href="/exchange"
                          :is-active="isActive('exchange')"
                          type="inner">Обмен</nav-menu-button>
-        <nav-menu-button :href="$route.name"
+        <nav-menu-button :href="curRoute"
                          :is-active="false"
                          type="inner">{{ curUserName }}</nav-menu-button>
         <nav-menu-button v-if="$store.getters.isAuthenticated"
@@ -37,6 +37,9 @@ export default {
     computed: {
         curUserName() {
             return UserAdapter(this.$store.getters.user, true).name;
+        },
+        curRoute() {
+            return this.$route.name === 'index' ? '/' : this.$route.name;
         }
     },
     methods: {
