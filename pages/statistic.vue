@@ -2,7 +2,7 @@
     <div class="statistic-container">
         <div class="statistic-inner-container">
             <currency-translater></currency-translater>
-            <currency-chart></currency-chart>
+            <currency-chart url="second"></currency-chart>
             <div class="slider-outer-container">
                 <div class="slider-container">
                     <el-slider v-model="value" :min="1" :max="max"></el-slider>

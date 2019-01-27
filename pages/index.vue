@@ -1,6 +1,6 @@
 <template>
     <div class="app">
-        <currency-chart></currency-chart>
+        <currency-chart url="first"></currency-chart>
     </div>
 </template>
 

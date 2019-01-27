@@ -8,6 +8,8 @@ const UserAdapter = (user, isFake = false) => {
     return {
         id: user.id,
         name: user.firstName + " " + user.middleName + " " + user.lastName,
+        // name: 'Иванов Иван Иванович',
+        accounts: user.accounts,
     }
 };
 

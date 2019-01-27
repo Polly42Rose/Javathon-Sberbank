@@ -4,21 +4,24 @@
             <div class="currency-chart-pickers-container">
                 <el-date-picker class="from-time-currency-chart-picker"
                                 v-model="fromTime"
-                                type="datetime"
+                                type="date"
                                 placeholder="Время начала">
                 </el-date-picker>
                 <el-date-picker
                         v-model="toTime"
-                        type="datetime"
+                        type="date"
                         placeholder="Время окончания">
                 </el-date-picker>
             </div>
             <div class="Chart__list">
                 <div class="Chart">
                     <div class="chart-container">
-                        <line-chart v-if=loaded :options="labels" :chart-data="chartData" class="chart-style"></line-chart>
+                        <line-chart v-if=loaded :options="labels" :new-data="chartData" :chart-data="chartData" class="chart-style"></line-chart>
                     </div>
                 </div>
+            </div>
+            <div class="middle-button">
+                <super-button @click="getData" :isButton="true" :isActive="false" type="inner">Рассчитать график</super-button>
             </div>
         </div>
     </div>
@@ -26,9 +29,16 @@
 
 <script>
 import LineChart from '@/components/LineChart.js';
+import axios from 'axios';
+import moment from 'moment';
+import SuperButton from '@/components/navMenu/NavMenuButton';
+
 
 export default {
     name: "CurrencyChart",
+    props: {
+        url: {type: String, required: true}
+    },
     data() {
         return {
             chartData: [
@@ -47,20 +57,35 @@ export default {
             toTime: '',
         }
     },
-    mounted() {
-        this.getData();
-    },
     methods: {
         getData() {
-            for (let i = 0; i < 100; ++i) {
-                this.labels.push(i * 10 + 1);
-                this.chartData[0].data.push(Math.sin(i) * Math.atan(i) * i * i);
+            this.loaded = false;
+            const from = moment(this.fromTime, "YYYY.MM.DD").format("DD/MM/YYYY");
+            const to = moment(this.toTime, "YYYY.MM.DD").format("DD/MM/YYYY");
+            console.error(this.fromTime);
+
+            const promise = this.url === "second" ? this.$api.getSecondChart({account_id: this.$store.getters.loggedUser.accounts[0].id, from: from, to: to, type: this.$route.query.currency})
+                : this.$api.getFirstChart( {from: from, to: to, type: this.$route.query.currency});
+
+            if (this.url === "second") {
+                promise.then((result) => {
+                    this.labels = result[1];
+                    this.chartData[0].data = result[0];
+                    this.loaded = true;
+                });
             }
-            this.loaded = true;
+            else {
+                promise.then((result) => {
+                    this.labels = result.dates;
+                    this.chartData[0].data = result.values.map((el) => parseInt(el));
+                    this.loaded = true;
+                });
+            }
         },
     },
     components: {
         LineChart,
+        SuperButton,
     }
 }
 </script>
@@ -94,6 +119,12 @@ export default {
     .container {
         max-width: 80vw;
         margin: 0 auto;
+    }
+
+    .middle-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
     .Chart {
         background: white;
