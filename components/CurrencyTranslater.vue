@@ -1,14 +1,15 @@
 <template>
     <div class="translater-container">
-        <translate-button :href="'/' + getCurrencyTypeRoute"
+        <translate-button :href="'/statistic' + getCurrencyTypeRoute"
                           :is-active="false"
-                          type="left">Руб</translate-button>
-        <translate-button :href="'/' + getCurrencyTypeRoute"
+                          type="left">{{getLeftButtonData}}</translate-button>
+        <translate-button :href="'/statistic' + getCurrencyTypeRoute"
                           :is-active="false"
+                          @click="swap"
                           type="inner">-></translate-button>
-        <translate-button :href="'/' + getCurrencyTypeRoute"
+        <translate-button :href="'/statistic' + getCurrencyTypeRoute"
                           :is-active="false"
-                          type="right">{{curCurrency}}</translate-button>
+                          type="right">{{getRightButtonData}}</translate-button>
 
     </div>
 </template>
@@ -32,6 +33,17 @@ export default {
         },
         curCurrency() {
             return this.$route.query.currency;
+        },
+        getLeftButtonData() {
+            return this.RublesIsLeft ? "Руб" : this.curCurrency;
+        },
+        getRightButtonData() {
+            return this.RublesIsLeft ? this.curCurrency : "Руб";
+        }
+    },
+    methods: {
+        swap() {
+            this.RublesIsLeft = !this.RublesIsLeft;
         }
     },
     name: "CurrencyTranslater"
