@@ -1,14 +1,21 @@
 <template>
-    
+    <div>
+        <currency-translater></currency-translater>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: "statistic",
-        layout: 'NavMenu',
+import CurrencyTranslater from '@/components/CurrencyTranslater';
+
+export default {
+    name: "statistic",
+    layout: 'NavMenu',
+    components: {
+        CurrencyTranslater,
     }
+}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

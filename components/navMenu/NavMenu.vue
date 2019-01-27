@@ -1,12 +1,12 @@
 <template>
     <div class="nav-menu-container">
-        <nav-menu-button href="/"
+        <nav-menu-button :href="'/' + getCurrencyTypeRoute"
                          :is-active="isActive('index')"
                          type="left">Курс Валюты</nav-menu-button>
-        <nav-menu-button href="/statistic"
+        <nav-menu-button :href="'/statistic' + getCurrencyTypeRoute"
                          :is-active="isActive('statistic')"
                          type="inner">Статистика</nav-menu-button>
-        <nav-menu-button href="/exchange"
+        <nav-menu-button :href="'/exchange' + getCurrencyTypeRoute"
                          :is-active="isActive('exchange')"
                          type="inner">Обмен</nav-menu-button>
         <nav-menu-button :href="curRoute"
@@ -17,7 +17,7 @@
                          :is-active="false"
                          type="right">Выйти</nav-menu-button>
         <nav-menu-button v-else
-                         href="/login"
+                         href="'/login'"
                          :is-active="isActive('login')"
                          type="right">Войти</nav-menu-button>
     </div>
@@ -39,7 +39,10 @@ export default {
             return UserAdapter(this.$store.getters.user, true).name;
         },
         curRoute() {
-            return this.$route.name === 'index' ? '/' : this.$route.name;
+            return (this.$route.name === 'index' ? '/' : this.$route.name) + this.getCurrencyTypeRoute;
+        },
+        getCurrencyTypeRoute() {
+            return "?currency=" + this.$route.query.currency;
         }
     },
     methods: {
