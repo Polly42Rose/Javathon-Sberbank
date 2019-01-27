@@ -1,5 +1,8 @@
 <template>
-    <a :href="href"><button :style="curStyle" :class="curClass"><slot></slot></button></a>
+    <div>
+        <button @click="click" v-if="isButton" :style="curStyle" :class="curClass"><slot></slot></button>
+        <a :href="href" v-else><button :style="curStyle" :class="curClass"><slot></slot></button></a>
+    </div>
 </template>
 
 <script>
@@ -7,8 +10,9 @@ export default {
     name: "navMenuButton",
     props: {
         isActive: { type: Boolean, required: true, },
-        href: { type: String, required: true, },
+        href: { type: String, required: false, },
         type: { type: String, required: true, },
+        isButton: { type: Boolean, required: false, default: false}
     },
     computed: {
 
@@ -30,6 +34,11 @@ export default {
         },
         curClass() {
             return this.isActive ? "nav-menu-active-style" : "nav-menu-style";
+        }
+    },
+    methods: {
+        click() {
+            this.$emit('click');
         }
     }
 }

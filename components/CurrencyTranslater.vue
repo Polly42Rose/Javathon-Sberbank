@@ -2,13 +2,15 @@
     <div class="translater-container">
         <translate-button :href="'/statistic' + getCurrencyTypeRoute"
                           :is-active="false"
+                          :is-button="true"
                           type="left">{{getLeftButtonData}}</translate-button>
-        <translate-button :href="'/statistic' + getCurrencyTypeRoute"
-                          :is-active="false"
+        <translate-button :is-active="false"
                           @click="swap"
+                          :is-button="true"
                           type="inner">-></translate-button>
         <translate-button :href="'/statistic' + getCurrencyTypeRoute"
                           :is-active="false"
+                          :is-button="true"
                           type="right">{{getRightButtonData}}</translate-button>
 
     </div>
