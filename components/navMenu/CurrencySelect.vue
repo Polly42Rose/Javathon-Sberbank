@@ -1,6 +1,6 @@
 <template>
     <div>
-        <select @select="handle" v-model="curCurrency">
+        <select @change="handle" v-model="curCurrency">
             <option v-for="currency in currencies" :key="currency.name" :value="currency.name">{{ currency.name }}</option>
         </select>
     </div>
@@ -13,15 +13,14 @@ export default {
     },
     data() {
         return {
-            curCurrency: '',
+            curCurrency: this.$route.query.currency,
         }
     },
     mounted() {
-        this.curCurrency = this.$route.query.currency;
     },
     methods: {
-        handle(data) {
-            this.$router.push({path: '', query: {currency: data}});
+        handle() {
+            this.$router.push({ query: {currency: this.curCurrency}});
         }
     },
     watchQuery: ['currency']

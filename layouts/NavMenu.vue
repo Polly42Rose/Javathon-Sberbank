@@ -27,12 +27,10 @@ export default {
     },
     methods: {
         getData() {
-            // this.$api.getCurrencies().then((result) => {
-            //     console.error(result);
-            //     result.map((el) => CurrencyAdapter(el));
-            // }).catch(() => {
-            // });
-            this.currencies = [null, null, null, null,].map((el) => CurrencyAdapter(el, true));
+            this.$api.getCurrencies().then((result) => {
+                console.error(result);
+                this.currencies = result.valutes.map((el) => CurrencyAdapter(el));
+            });
         }
     },
     components: {CurrencySelect, Rates, NavMenu},

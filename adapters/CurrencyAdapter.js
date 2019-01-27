@@ -11,7 +11,7 @@ const CurrencyAdapter = (currency, isFake) => {
     return {
         name: currency.charCode,
         value: currency.value,
-        isUp: generateBoolean(),
+        isUp: currency.sign === "+",
     };
 };
 
