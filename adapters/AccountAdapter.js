@@ -1,4 +1,14 @@
-const AccountAdapter = (account) => {
+import { generateString } from "@/assets/js/helper.js";
+
+const AccountAdapter = (account, isFake = false) => {
+    if (isFake) {
+        return {
+            id: Math.random(),
+            name: generateString(),
+            money: Math.random(),
+            currency: generateString(),
+        }
+    }
     return {
         id: account.id,
         name: account.name,
@@ -6,3 +16,5 @@ const AccountAdapter = (account) => {
         currency: account.currency,
     }
 };
+
+export default AccountAdapter;

@@ -65,7 +65,6 @@ export default {
                     const data = {
                         username: this.ruleForm.login,
                         password: this.ruleForm.password,
-                        _csrf: this.$store.getters.csrf,
                     };
                     console.error(data);
                     this.$api.login(data).then((result) => {

@@ -10,6 +10,7 @@ import CurrencyChart from '@/components/CurrencyChart.vue';
 export default {
     name: 'Index',
     layout: 'NavMenu',
+    middleware: 'isAuth',
     components: {
         CurrencyChart,
     },
