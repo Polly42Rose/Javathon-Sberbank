@@ -1,20 +1,26 @@
 <template>
     <div class="login-container">
+        {{$store.getters.loggedUser}}
         <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
             <el-form-item label="Логин" prop="login">
-                <el-input v-model="ruleForm.username" autocomplete="off" class="login-input"></el-input>
+                <el-input v-model="ruleForm.login" class="login-input"></el-input>
             </el-form-item>
+
             <el-form-item label="Пароль" prop="password">
-                <el-input type="password" v-model="ruleForm.password" autocomplete="off" class="login-input"></el-input>
+                <el-input type="password" v-model="ruleForm.password" class="login-input"></el-input>
             </el-form-item>
+
             <el-form-item>
                 <div class="login-buttons-container">
                     <button class="login-submit-button"
+                            type="button"
                             @click="submitForm('ruleForm')">Отправить</button>
                     <button class="login-clear-button"
+                            type="button"
                             @click="resetForm('ruleForm')">Очистить</button>
                 </div>
             </el-form-item>
+
         </el-form>
     </div>
 </template>
@@ -39,7 +45,7 @@ export default {
         };
         return {
             ruleForm: {
-                username: '',
+                login: '',
                 password: '',
             },
             rules: {
@@ -56,9 +62,14 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    this.$api.login(this.ruleForm).then((result) => {
+                    const data = {
+                        username: this.ruleForm.login,
+                        password: this.ruleForm.password,
+                        _csrf: this.$store.getters.csrf,
+                    };
+                    console.error(data);
+                    this.$api.login(data).then((result) => {
                         this.$store.commit('setUser', result);
-                        this.$router.push('/users');
                     }).catch(() => {
                         alert('Ваш пароль или email были некорректны');
                     });

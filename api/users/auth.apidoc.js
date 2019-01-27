@@ -1,5 +1,5 @@
 /**
- * @api {post} /api/login
+ * @api {post} /login
  * @apiName login
  * @apiGroup guests
  * @apiDescription login
@@ -19,8 +19,8 @@
  * @apiDescription registration
  */
 /**
- * @api {get} /api/users/authorize
- * @apiName getCurrentUser
+ * @api {get} /api/user
+ * @apiName getUser
  * @apiGroup users
  * @apiDescription get current user
  */
