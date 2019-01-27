@@ -9,7 +9,7 @@
         <nav-menu-button :href="'/exchange' + getCurrencyTypeRoute"
                          :is-active="isActive('exchange')"
                          type="inner">Обмен</nav-menu-button>
-        <nav-menu-button :href="curRoute"
+        <nav-menu-button :isButton="true"
                          :is-active="false"
                          type="inner">{{ curUserName }}</nav-menu-button>
         <nav-menu-button v-if="$store.getters.isAuthenticated"
