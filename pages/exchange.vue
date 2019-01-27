@@ -13,7 +13,8 @@
             <div class="sum-title">Сумма </div>
             <input type="number" v-model="sum"/>
         </div>
-        <nav-menu-button :isButton="true"
+        <nav-menu-button @click="handle"
+                         :isButton="true"
                          :is-active="false"
                          type="inner">Обменять</nav-menu-button>
     </div>
@@ -41,7 +42,10 @@ export default {
     methods: {
         getData() {
              this.accounts = [null, null, null, null].map((el) => AccountAdapter(el, true));
-        }
+        },
+        handle() {
+
+        },
     },
 }
 </script>

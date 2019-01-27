@@ -64,7 +64,7 @@ export default {
             const to = moment(this.toTime, "YYYY.MM.DD").format("DD/MM/YYYY");
             console.error(this.fromTime);
 
-            const promise = this.url === "second" ? this.$api.getSecondChart({account_id: this.$store.getters.loggedUser.accounts[0].id, from: from, to: to, type: this.$route.query.currency})
+            const promise = this.url === "second" ? this.$api.getSecondChart({account_id: (this.$route.query.currency === 'USD' ? 8 : 7), from: from, to: to, type: this.$route.query.currency})
                 : this.$api.getFirstChart( {from: from, to: to, type: this.$route.query.currency});
 
             if (this.url === "second") {
