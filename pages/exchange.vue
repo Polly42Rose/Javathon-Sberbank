@@ -2,12 +2,12 @@
     <div class="exchange-container">
         <currency-translater class="margin-bottom"></currency-translater>
         <div>Первая карта</div>
-        <select class="account-exchange-style first-account-select">
-            <option v-for="account in accounts" :key="account.id" :value="account.number">{{account.number}}</option>
+        <select class="account-exchange-style first-account-select" v-model="first_account">
+            <option v-for="account in accounts" :key="account.id" :value="account.id">{{account.number}}</option>
         </select>
-        <div class="margin-bottom">Вторая карта</div>
-        <select class="account-exchange-style">
-            <option v-for="account in accounts" :key="account.id" :value="account.number">{{account.number}}</option>
+        <div class="margin-bottom" >Вторая карта</div>
+        <select class="account-exchange-style" v-model="second_account">
+            <option v-for="account in accounts" :key="account.id" :value="account.id">{{account.number}}</option>
         </select>
         <div class="sum-container">
             <div class="sum-title">Сумма </div>
@@ -36,6 +36,8 @@ export default {
     data() {
         return {
             accounts: this.$store.getters.loggedUser.accounts,
+            first_account: 0,
+            second_account: 0,
             sum: 0,
         }
     },
@@ -44,7 +46,7 @@ export default {
              this.accounts = [null, null, null, null].map((el) => AccountAdapter(el, true));
         },
         handle() {
-
+            this.$api.exchange({acc_rub_id: this.first_account, acc_foreign_id: this.second_account, money: this.sum})
         },
     },
 }
