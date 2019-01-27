@@ -101,7 +101,7 @@ export default {
             margin-right: 1vw;
             margin-left: 1vw;
             
-            @media (max-width: 500px) {
+            @media (max-width: 800px) {
                 margin-bottom: 1vh;
             }
         }

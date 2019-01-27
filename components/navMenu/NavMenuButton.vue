@@ -51,7 +51,7 @@ export default {
     %nav-menu-button {
         @extend %clear-button-style;
         width: 10vw;
-        @media (max-width: 500px) {
+        @media (max-width: 800px) {
             width: 20vw;
         }
         height: 3em;

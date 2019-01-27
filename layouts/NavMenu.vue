@@ -53,7 +53,7 @@ export default {
 
         .nav-menu-rates {
             flex-basis: 10%;
-            @media (max-width: 500px) {
+            @media (max-width: 800px) {
                 margin-right: 10vw;
 
             }
